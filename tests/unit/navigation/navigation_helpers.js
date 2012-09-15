@@ -6,7 +6,7 @@
 
 	module('jquery.mobile.navigation.js', {
 		setup: function(){
-			if ( location.hash ) {
+			if ( location.hash && location.hash !== "#" ) {
 				stop();
 				$(document).one("pagechange", function() {
 					start();
@@ -248,23 +248,5 @@
 		var allUriParts = "http://jblas:password@mycompany.com:8080/mail/inbox?msg=1234&type=unread#msg-content";
 
 		equal( $.mobile.path.getLocation( allUriParts ), allUriParts.replace( "jblas:password@", "") );
-	});
-
-	test( "calling mobile back uses phonegap's navigator object when present", function() {
-		var previous = $.mobile.phonegapNavigationEnabled;
-
-		expect( 1 );
-
-		$.mobile.phonegapNavigationEnabled = true;
-		window.navigator = {
-			app: {
-				backHistory: function() {
-					ok( true, "history back called" );
-				}
-			}
-		};
-
-		$.mobile.back();
-		$.mobile.phonegapNavigationEnabled = previous;
 	});
 })(jQuery);

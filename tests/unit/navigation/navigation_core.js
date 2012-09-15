@@ -34,7 +34,7 @@
 
 			// open our test page
 			function(){
-				$.testHelper.openPage("#active-state-page1");
+				$.mobile.changePage( $( "#active-state-page1" ) );
 			},
 
 			function(){
@@ -374,7 +374,7 @@
 		$.mobile.urlHistory.activeIndex = 0;
 
 		$.testHelper.pageSequence([
-			function(){ $.testHelper.openPage("#dup-history-first"); },
+			function(){ $.mobile.changePage( $( "#dup-history-first" ) ); },
 			function(){ $("#dup-history-first a").click(); },
 			function(){ $("#dup-history-second a:first").click(); },
 			function(){ $("#dup-history-first a").click(); },
@@ -553,7 +553,7 @@
 	asyncTest( "loading a relative file path after an embeded page works", function(){
 		$.testHelper.pageSequence([
 			// transition second page
-			function(){ $.testHelper.openPage("#relative-after-embeded-page-first"); },
+			function(){ $.mobile.changePage( $( "#relative-after-embeded-page-first" ) ); },
 
 			// transition second page
 			function(){ $("#relative-after-embeded-page-first a").click(); },
@@ -591,7 +591,7 @@
 
 		$.testHelper.pageSequence([
 			function(){
-				$.testHelper.openPage("#ajax-title-page");
+				$.mobile.changePage( $( "#ajax-title-page" ) );
 			},
 
 			function(){
@@ -613,7 +613,7 @@
 	asyncTest( "Page title updates properly from title tag when loading an external page", function(){
 		$.testHelper.pageSequence([
 			function(){
-				$.testHelper.openPage("#ajax-title-page");
+				$.mobile.changePage( $( "#ajax-title-page" ) );
 			},
 
 			function(){
@@ -738,7 +738,7 @@
 		$.testHelper.pageSequence([
 			// open our test page
 			function(){
-				$.testHelper.openPage("#dialog-param-link");
+				$.mobile.changePage( $( "#dialog-param-link" ) );
 			},
 
 			// navigate to the subdirectory page with the query link
@@ -855,7 +855,7 @@
 		$.testHelper.pageSequence([
 			// open our test page
 			function(){
-				$.testHelper.openPage("#internal-no-action-form-page");
+				$.mobile.changePage( $( "#internal-no-action-form-page" ) );
 			},
 
 			function(){
@@ -1015,7 +1015,7 @@
 		$.testHelper.pageSequence([
 			// open our test page
 			function(){
-				$.testHelper.openPage("#inject-links-page");
+				$.mobile.changePage( $( "#inject-links-page" ) );
 			},
 
 			function(){
@@ -1036,6 +1036,7 @@
 			function(){
 				// Make sure we actually navigated to the expected page.
 				ok( $.mobile.activePage[ 0 ] == $( "#injected-test-page" )[ 0 ], "navigated successfully to #injected-test-page" );
+				$( "#injected-test-page" ).remove();
 
 				start();
 			}
@@ -1047,7 +1048,7 @@
 			// open our test page
 			function(){
 				// Navigate to any page except the first page of the application.
-				$.testHelper.openPage("#foo");
+				$.mobile.changePage( $( "#foo" ) );
 			},
 
 			function(){
@@ -1086,7 +1087,7 @@
 				deepEqual( $( ".first-page" ).length, 1, "first page was not duplicated" );
 
 				// Navigate to any page except the first page of the application.
-				$.testHelper.openPage("#foo");
+				$.mobile.changePage( $( "#foo" ) );
 			},
 
 			function(){

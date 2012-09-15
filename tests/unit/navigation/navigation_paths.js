@@ -12,12 +12,12 @@
 			function(){
 				// reset before each test, all tests expect original page
 				// for relative urls
-				$.testHelper.openPage( "#" + home);
+				$.mobile.changePage( home );
 			},
 
 			// open our test page
 			function(){
-				$.testHelper.openPage("#pathing-tests");
+				$.mobile.changePage( $( "#pathing-tests" ) );
 			},
 
 			// navigate to the linked page
